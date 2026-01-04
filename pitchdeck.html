@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoosterFi - Pitch Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Uniswap Official Colors */
+            --bg-primary: #131313;
+            --bg-secondary: #191919;
+            --bg-card: #1B1B1B;
+            --bg-card-hover: #222222;
+
+            /* Uniswap Pink - Official #FF007A */
+            --pink-primary: #FF007A;
+            --pink-secondary: #FB118E;
+            --pink-light: #FFB8E2;
+            --pink-gradient: linear-gradient(90deg, #FF007A 0%, #FB118E 100%);
+            --pink-glow: rgba(255, 0, 122, 0.4);
+
+            /* Text Colors */
+            --text-primary: #FFFFFF;
+            --text-secondary: #9B9B9B;
+            --text-muted: #5E5E5E;
+
+            /* UI Colors */
+            --border-color: #2C2C2C;
+            --success: #21C95E;
+            --warning: #FFC107;
+            --error: #FD4040;
+
+            /* Uniswap Accent Colors */
+            --blue-vibrant: #2172E5;
+            --green-vibrant: #21C95E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(19, 19, 19, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--pink-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: var(--bg-card);
+        }
+
+        .slide-counter {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Slides Container */
+        .slides-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Slide 1: Cover */
+        .slide-cover {
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 0, 122, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 50% -10%, rgba(251, 17, 142, 0.15) 0%, transparent 40%);
+        }
+
+        .cover-content {
+            text-align: center;
+        }
+
+        .cover-logo {
+            font-size: 5rem;
+            font-weight: 800;
+            background: var(--pink-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .cover-tagline {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .cover-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .cover-url {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: var(--pink-primary);
+        }
+
+        /* Slide Titles */
+        .slide-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--pink-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--pink-primary);
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px var(--pink-glow);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Flow Diagram */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .flow-step {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .flow-step:hover {
+            border-color: var(--pink-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--pink-glow);
+        }
+
+        .flow-step-number {
+            background: var(--pink-gradient);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .flow-step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-step-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .flow-arrow {
+            color: var(--pink-primary);
+            font-size: 1.5rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--pink-primary);
+            box-shadow: 0 4px 24px var(--pink-glow);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--pink-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            background: var(--bg-card);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .comparison-table th:first-child {
+            border-radius: 12px 0 0 0;
+        }
+
+        .comparison-table th:last-child {
+            border-radius: 0 12px 0 0;
+        }
+
+        .comparison-table td {
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tr:hover td {
+            background: var(--bg-card);
+        }
+
+        .check {
+            color: var(--success);
+        }
+
+        .cross {
+            color: var(--error);
+        }
+
+        /* Specs Grid */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.25rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .spec-label {
+            color: var(--text-secondary);
+        }
+
+        .spec-value {
+            font-weight: 600;
+            color: var(--pink-primary);
+        }
+
+        /* Code Block */
+        .code-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .code-block .comment {
+            color: var(--text-muted);
+        }
+
+        .code-block .address {
+            color: var(--pink-primary);
+        }
+
+        /* Revenue Split */
+        .revenue-split {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .revenue-item {
+            text-align: center;
+        }
+
+        .revenue-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .revenue-circle.primary {
+            background: var(--pink-gradient);
+        }
+
+        .revenue-circle.secondary {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+        }
+
+        .revenue-percent {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .revenue-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Roadmap */
+        .roadmap {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .roadmap-item {
+            position: relative;
+            padding: 1.5rem;
+            padding-left: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+        }
+
+        .roadmap-item.completed::before {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .roadmap-item.in-progress::before {
+            background: var(--warning);
+            border-color: var(--warning);
+        }
+
+        .roadmap-phase {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .roadmap-status {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .roadmap-status.completed {
+            background: rgba(0, 200, 83, 0.2);
+            color: var(--success);
+        }
+
+        .roadmap-status.in-progress {
+            background: rgba(255, 184, 0, 0.2);
+            color: var(--warning);
+        }
+
+        .roadmap-status.pending {
+            background: rgba(155, 155, 155, 0.2);
+            color: var(--text-secondary);
+        }
+
+        .roadmap-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 3rem;
+            background: var(--bg-card);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--pink-gradient);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px var(--pink-glow);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: rgba(255, 184, 0, 0.1);
+            border: 1px solid rgba(255, 184, 0, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .disclaimer-title {
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .disclaimer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* Slide Number */
+        .slide-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Use Cases */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .use-case {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .use-case-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cover-logo {
+                font-size: 3rem;
+            }
+
+            .cover-tagline {
+                font-size: 1.3rem;
+            }
+
+            .slide-title {
+                font-size: 2rem;
+            }
+
+            .flow-container {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .revenue-split {
+                gap: 1.5rem;
+            }
+
+            .revenue-circle {
+                width: 120px;
+                height: 120px;
+            }
+
+            .revenue-percent {
+                font-size: 2rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .slide {
+                page-break-after: always;
+                min-height: auto;
+                padding: 2rem;
+            }
+
+            .nav, .scroll-indicator {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="logo">BoosterFi</div>
+        <div class="nav-links">
+            <a href="#cover">Início</a>
+            <a href="#problem">Problema</a>
+            <a href="#solution">Solução</a>
+            <a href="#market">Mercado</a>
+            <a href="#specs">Specs</a>
+            <a href="#roadmap">Roadmap</a>
+        </div>
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / 12
+        </div>
+    </nav>
+
+    <!-- Slides Container -->
+    <div class="slides-container" id="slidesContainer">
+
+        <!-- Slide 1: Cover -->
+        <section class="slide slide-cover" id="cover">
+            <div class="slide-content cover-content">
+                <div class="cover-logo">BoosterFi</div>
+                <h1 class="cover-tagline">Impulsione seus rendimentos com Flash Loans</h1>
+                <p class="cover-subtitle">Protocolo de Liquidez Descentralizado na Arbitrum</p>
+                <div class="cover-badge">
+                    <span class="dot"></span>
+                    Powered by Arbitrum & USDC
+                </div>
+                <p class="cover-url">www.boosterfi.app</p>
+            </div>
+            <div class="scroll-indicator">
+                Scroll para continuar
+                <span>↓</span>
+            </div>
+            <div class="slide-number">01</div>
+        </section>
+
+        <!-- Slide 2: Problem -->
+        <section class="slide" id="problem">
+            <div class="slide-content">
+                <h2 class="slide-title">O Problema</h2>
+                <p class="slide-subtitle">O Mercado DeFi tem um problema de ineficiência</p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">💔</div>
+                        <h3 class="card-title">Liquidez Fragmentada</h3>
+                        <p class="card-text">Capital parado sem gerar rendimento real para os usuários</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🏦</div>
+                        <h3 class="card-title">Flash Loans Centralizados</h3>
+                        <p class="card-text">Apenas grandes protocolos lucram com as taxas geradas</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🧩</div>
+                        <h3 class="card-title">Complexidade Técnica</h3>
+                        <p class="card-text">Usuários comuns não conseguem participar do mercado</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📉</div>
+                        <h3 class="card-title">Tokens Inflacionários</h3>
+                        <p class="card-text">Rendimentos pagos com tokens sem valor real</p>
+                    </div>
+                </div>
+
+                <div class="stat-card" style="margin-top: 2rem; text-align: center;">
+                    <p style="color: var(--text-secondary); font-size: 1.1rem;">
+                        💡 <strong style="color: var(--pink-primary);">Bilhões de dólares</strong> em Flash Loans são executados diariamente, mas apenas os protocolos lucram com as taxas.
+                    </p>
+                </div>
+            </div>
+            <div class="slide-number">02</div>
+        </section>
+
+        <!-- Slide 3: Solution -->
+        <section class="slide" id="solution">
+            <div class="slide-content">
+                <h2 class="slide-title">A Solução</h2>
+                <p class="slide-subtitle">BoosterFi: Democratizando os Flash Loans</p>
+
+                <div class="flow-container">
+                    <div class="flow-step">
+                        <div class="flow-step-number">1</div>
+                        <div class="flow-step-title">Depósito</div>
+                        <div class="flow-step-text">Você deposita USDC</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="flow-step-number">2</div>
+                        <div class="flow-step-title">Pool</div>
+                        <div class="flow-step-text">Capital vai para o pool</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="flow-step-number">3</div>
+                        <div class="flow-step-title">Flash Loans</div>
+                        <div class="flow-step-text">Traders utilizam</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="flow-step-number">4</div>
+                        <div class="flow-step-title">Taxas</div>
+                        <div class="flow-step-text">0.09% por operação</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="flow-step-number">5</div>
+                        <div class="flow-step-title">Rendimento</div>
+                        <div class="flow-step-text">Você recebe!</div>
+                    </div>
+                </div>
+
+                <div class="cta-section" style="margin-top: 2rem;">
+                    <p style="font-size: 1.3rem; color: var(--text-secondary);">
+                        ⚡ Tudo acontece <strong style="color: var(--text-primary);">on-chain</strong>, verificável e transparente.
+                    </p>
+                </div>
+            </div>
+            <div class="slide-number">03</div>
+        </section>
+
+        <!-- Slide 4: Market -->
+        <section class="slide" id="market">
+            <div class="slide-content">
+                <h2 class="slide-title">Oportunidade de Mercado</h2>
+                <p class="slide-subtitle">Flash Loans: Um Mercado Bilionário</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">$2B+</div>
+                        <div class="stat-label">Volume Diário Flash Loans</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">0.09%</div>
+                        <div class="stat-label">Taxa Média</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">$1.8M</div>
+                        <div class="stat-label">Receita Potencial Diária</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">40%+</div>
+                        <div class="stat-label">Crescimento DeFi Anual</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem; margin-bottom: 1rem; color: var(--text-primary);">Casos de Uso dos Flash Loans</h3>
+                <div class="use-cases">
+                    <div class="use-case">
+                        <span class="use-case-icon">⚡</span>
+                        <span>Arbitragem entre DEXs</span>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-case-icon">💰</span>
+                        <span>Liquidações em protocolos</span>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-case-icon">🔄</span>
+                        <span>Refinanciamento de posições</span>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-case-icon">📊</span>
+                        <span>Rebalanceamento de portfolios</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">04</div>
+        </section>
+
+        <!-- Slide 5: Why BoosterFi -->
+        <section class="slide" id="why">
+            <div class="slide-content">
+                <h2 class="slide-title">Por que BoosterFi?</h2>
+                <p class="slide-subtitle">Nossos Diferenciais</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>BoosterFi</th>
+                            <th>Concorrentes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Token Nativo</td>
+                            <td><span class="check">✓</span> Sem token (estável)</td>
+                            <td><span class="cross">✗</span> Tokens inflacionários</td>
+                        </tr>
+                        <tr>
+                            <td>Fonte de Receita</td>
+                            <td><span class="check">✓</span> Taxas reais</td>
+                            <td><span class="cross">✗</span> Rendimentos artificiais</td>
+                        </tr>
+                        <tr>
+                            <td>Moeda Base</td>
+                            <td><span class="check">✓</span> 100% USDC</td>
+                            <td><span class="cross">✗</span> Exposição a volatilidade</td>
+                        </tr>
+                        <tr>
+                            <td>Rede</td>
+                            <td><span class="check">✓</span> Arbitrum (taxas baixas)</td>
+                            <td><span class="cross">✗</span> Ethereum L1 (caro)</td>
+                        </tr>
+                        <tr>
+                            <td>Usabilidade</td>
+                            <td><span class="check">✓</span> Interface simples</td>
+                            <td><span class="cross">✗</span> Complexo demais</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="card" style="margin-top: 2rem; text-align: center;">
+                    <h3 class="card-title">💎 Por que SEM Token?</h3>
+                    <p class="card-text" style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                        "Tokens nativos criam volatilidade, pressão de venda e problemas de valor circular. USDC = estabilidade real."
+                    </p>
+                </div>
+            </div>
+            <div class="slide-number">05</div>
+        </section>
+
+        <!-- Slide 6: Technical Specs -->
+        <section class="slide" id="specs">
+            <div class="slide-content">
+                <h2 class="slide-title">Especificações Técnicas</h2>
+                <p class="slide-subtitle">Arquitetura do Protocolo</p>
+
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Blockchain</span>
+                        <span class="spec-value">Arbitrum (L2)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Token</span>
+                        <span class="spec-value">USDC</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Depósito Mínimo</span>
+                        <span class="spec-value">$100 USDC</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Recomendado</span>
+                        <span class="spec-value">$1,000+ USDC</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Períodos de Bloqueio</span>
+                        <span class="spec-value">1, 5, 10, 20 dias</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Gas Estimado</span>
+                        <span class="spec-value">$1-2 ETH</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Níveis de Referral</span>
+                        <span class="spec-value">20 níveis</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Smart Contracts</span>
+                        <span class="spec-value">3 (verificados)</span>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <span class="comment">// Smart Contracts (Verificados no Arbiscan)</span><br><br>
+                    <span class="comment">Main Liquidity Manager:</span><br>
+                    <span class="address">0x... (a ser publicado)</span><br><br>
+                    <span class="comment">Payer Contract 1:</span><br>
+                    <span class="address">0x... (a ser publicado)</span><br><br>
+                    <span class="comment">Payer Contract 2:</span><br>
+                    <span class="address">0x... (a ser publicado)</span>
+                </div>
+            </div>
+            <div class="slide-number">06</div>
+        </section>
+
+        <!-- Slide 7: Security -->
+        <section class="slide" id="security">
+            <div class="slide-content">
+                <h2 class="slide-title">Segurança</h2>
+                <p class="slide-subtitle">Arquitetura de Segurança Robusta</p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">📜</div>
+                        <h3 class="card-title">Smart Contracts Separados</h3>
+                        <p class="card-text">Arquitetura modular com 3 contratos para minimizar riscos</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔍</div>
+                        <h3 class="card-title">Código Verificado</h3>
+                        <p class="card-text">Open-source e verificável no Arbiscan</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🛡️</div>
+                        <h3 class="card-title">Segurança Arbitrum</h3>
+                        <p class="card-text">Herda a segurança do Ethereum L1</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">✅</div>
+                        <h3 class="card-title">Auditorias</h3>
+                        <p class="card-text">Processo de auditoria em andamento</p>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 2rem;">
+                    <h3 class="card-title" style="margin-bottom: 1rem;">🔐 Transparência Total</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="check">✓</span> Todas transações on-chain
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="check">✓</span> Verificável no Arbiscan
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="check">✓</span> Código aberto no GitHub
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="check">✓</span> Eventos rastreáveis
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">07</div>
+        </section>
+
+        <!-- Slide 8: Revenue Model -->
+        <section class="slide" id="revenue">
+            <div class="slide-content">
+                <h2 class="slide-title">Modelo de Receita</h2>
+                <p class="slide-subtitle">Rendimentos Baseados em Receita Real de Flash Loans</p>
+
+                <div class="cards-grid" style="margin-bottom: 2rem;">
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">💰</div>
+                        <h3 class="card-title">Taxas de Flash Loans</h3>
+                        <p class="card-text">Cada empréstimo instantâneo gera taxas que são distribuídas aos provedores de liquidez</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">📈</div>
+                        <h3 class="card-title">Rendimentos Variáveis</h3>
+                        <p class="card-text">Retornos dependem do volume de Flash Loans e receita real do protocolo</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🔄</div>
+                        <h3 class="card-title">Distribuição Automática</h3>
+                        <p class="card-text">Rendimentos distribuídos proporcionalmente via eventos on-chain verificáveis</p>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h3 style="margin-bottom: 1rem; color: var(--text-primary);">Períodos de Bloqueio</h3>
+                    <div class="stats-grid" style="max-width: 800px; margin: 0 auto;">
+                        <div class="stat-card">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Dia</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Dias</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">10</div>
+                            <div class="stat-label">Dias</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">20</div>
+                            <div class="stat-label">Dias</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-top: 1.5rem; font-size: 0.95rem;">
+                        Cada período oferece perfis de rendimento distintos. Saques antecipados estão sujeitos a taxas.
+                    </p>
+                </div>
+            </div>
+            <div class="slide-number">08</div>
+        </section>
+
+        <!-- Slide 9: Roadmap -->
+        <section class="slide" id="roadmap">
+            <div class="slide-content">
+                <h2 class="slide-title">Roadmap</h2>
+                <p class="slide-subtitle">Fases de Desenvolvimento</p>
+
+                <div class="roadmap">
+                    <div class="roadmap-item completed">
+                        <div class="roadmap-phase">
+                            Fase 1
+                            <span class="roadmap-status completed">Completo</span>
+                        </div>
+                        <p class="roadmap-text">Smart Contracts desenvolvidos e testados</p>
+                    </div>
+                    <div class="roadmap-item completed">
+                        <div class="roadmap-phase">
+                            Fase 2
+                            <span class="roadmap-status completed">Completo</span>
+                        </div>
+                        <p class="roadmap-text">App funcional (app.boosterfi.app)</p>
+                    </div>
+                    <div class="roadmap-item in-progress">
+                        <div class="roadmap-phase">
+                            Fase 3
+                            <span class="roadmap-status in-progress">Em andamento</span>
+                        </div>
+                        <p class="roadmap-text">Landing page + Documentação completa</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <div class="roadmap-phase">
+                            Fase 4
+                            <span class="roadmap-status pending">Próximo</span>
+                        </div>
+                        <p class="roadmap-text">Auditorias de segurança externas</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <div class="roadmap-phase">
+                            Fase 5
+                            <span class="roadmap-status pending">Futuro</span>
+                        </div>
+                        <p class="roadmap-text">Lançamento público oficial</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <div class="roadmap-phase">
+                            Fase 6
+                            <span class="roadmap-status pending">Futuro</span>
+                        </div>
+                        <p class="roadmap-text">Expansão multi-chain (Optimism, Base, etc.)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">09</div>
+        </section>
+
+        <!-- Slide 10: Referral -->
+        <section class="slide" id="referral">
+            <div class="slide-content">
+                <h2 class="slide-title">Sistema de Referral</h2>
+                <p class="slide-subtitle">20 Níveis de Comissão - Ganhe Indicando</p>
+
+                <div class="stats-grid" style="margin-bottom: 2rem;">
+                    <div class="stat-card">
+                        <div class="stat-value">20%</div>
+                        <div class="stat-label">Nível 1 - Indicação Direta</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8%</div>
+                        <div class="stat-label">Nível 2</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3%</div>
+                        <div class="stat-label">Nível 3</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">2-8%</div>
+                        <div class="stat-label">Níveis 4-20</div>
+                    </div>
+                </div>
+
+                <div class="cards-grid" style="max-width: 900px; margin: 0 auto;">
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">🔗</div>
+                        <h3 class="card-title">Link Único</h3>
+                        <p class="card-text">Cada usuário recebe um link exclusivo de indicação</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">📊</div>
+                        <h3 class="card-title">20 Níveis</h3>
+                        <p class="card-text">Sistema unilevel com requisitos de desbloqueio</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">💎</div>
+                        <h3 class="card-title">ROI Match</h3>
+                        <p class="card-text">Ganhe bônus sobre os rendimentos da sua rede</p>
+                    </div>
+                </div>
+
+                <div class="flow-container" style="margin-top: 3rem;">
+                    <div class="flow-step">
+                        <div class="flow-step-number">1</div>
+                        <div class="flow-step-title">Gere seu Link</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="flow-step-number">2</div>
+                        <div class="flow-step-title">Compartilhe</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="flow-step-number">3</div>
+                        <div class="flow-step-title">Amigos Depositam</div>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">
+                        <div class="flow-step-number">4</div>
+                        <div class="flow-step-title">Você Ganha!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">10</div>
+        </section>
+
+        <!-- Slide 11: Why Now -->
+        <section class="slide" id="whynow">
+            <div class="slide-content">
+                <h2 class="slide-title">Por que Investir Agora?</h2>
+                <p class="slide-subtitle">Vantagens do Early Adopter</p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">🥇</div>
+                        <h3 class="card-title">Primeiro a Entrar</h3>
+                        <p class="card-text">Maior acumulação de rendimentos desde o início</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📈</div>
+                        <h3 class="card-title">Crescimento do Pool</h3>
+                        <p class="card-text">Mais liquidez = Mais Flash Loans = Mais taxas</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔗</div>
+                        <h3 class="card-title">Rede de Referral</h3>
+                        <p class="card-text">Construa sua rede de indicados desde o início</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">💎</div>
+                        <h3 class="card-title">Sem Diluição</h3>
+                        <p class="card-text">Sem token = sem inflação = sem perda de valor</p>
+                    </div>
+                </div>
+
+                <div class="cta-section" style="margin-top: 3rem;">
+                    <h3 class="cta-title">Pronto para começar?</h3>
+                    <p class="cta-text">Junte-se aos primeiros usuários do BoosterFi</p>
+                    <a href="https://app.boosterfi.app" class="btn-primary">
+                        Acessar App →
+                    </a>
+                </div>
+            </div>
+            <div class="slide-number">11</div>
+        </section>
+
+        <!-- Slide 12: Contact & Disclaimer -->
+        <section class="slide" id="contact">
+            <div class="slide-content" style="text-align: center;">
+                <div class="cover-logo" style="font-size: 4rem;">BoosterFi</div>
+                <h2 style="font-size: 1.8rem; color: var(--text-secondary); margin-bottom: 3rem;">
+                    O Futuro da Liquidez DeFi
+                </h2>
+
+                <div class="stats-grid" style="max-width: 600px; margin: 0 auto 3rem;">
+                    <div class="stat-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🌐</div>
+                        <div style="color: var(--pink-primary); font-weight: 600;">www.boosterfi.app</div>
+                        <div class="stat-label">Website</div>
+                    </div>
+                    <div class="stat-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+                        <div style="color: var(--pink-primary); font-weight: 600;">app.boosterfi.app</div>
+                        <div class="stat-label">Plataforma</div>
+                    </div>
+                    <div class="stat-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📄</div>
+                        <div style="color: var(--pink-primary); font-weight: 600;">docs.boosterfi.app</div>
+                        <div class="stat-label">Documentação</div>
+                    </div>
+                </div>
+
+                <div class="disclaimer">
+                    <div class="disclaimer-title">
+                        ⚠️ Aviso Legal
+                    </div>
+                    <p class="disclaimer-text">
+                        <strong>BoosterFi não é uma oferta de investimento.</strong><br><br>
+                        • Rendimentos não são garantidos e dependem do volume de Flash Loans<br>
+                        • Criptomoedas e DeFi envolvem riscos significativos<br>
+                        • Faça sua própria pesquisa (DYOR) antes de participar<br>
+                        • Nunca invista mais do que está disposto a perder<br><br>
+                        Este material é apenas para fins educacionais e informativos.
+                    </p>
+                </div>
+            </div>
+            <div class="slide-number">12</div>
+        </section>
+
+    </div>
+
+    <script>
+        // Update slide counter on scroll
+        const slidesContainer = document.getElementById('slidesContainer');
+        const slides = document.querySelectorAll('.slide');
+        const currentSlideSpan = document.getElementById('currentSlide');
+
+        slidesContainer.addEventListener('scroll', () => {
+            const scrollPosition = slidesContainer.scrollTop;
+            const windowHeight = window.innerHeight;
+            const currentIndex = Math.round(scrollPosition / windowHeight) + 1;
+            currentSlideSpan.textContent = Math.min(currentIndex, slides.length);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSlide = document.querySelector(targetId);
+                targetSlide.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const scrollAmount = window.innerHeight;
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                slidesContainer.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                slidesContainer.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

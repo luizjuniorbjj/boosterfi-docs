@@ -1,0 +1,144 @@
+/* BoosterFi Custom Styles for MkDocs Material */
+
+:root {
+  --boosterfi-purple: #8B5CF6;
+  --boosterfi-magenta: #D946EF;
+  --boosterfi-pink: #EC4899;
+  --boosterfi-dark-purple: #5B21B6;
+  --boosterfi-light-purple: #A78BFA;
+}
+
+/* Primary color overrides */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: var(--boosterfi-purple);
+  --md-accent-fg-color: var(--boosterfi-pink);
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--boosterfi-purple);
+  --md-accent-fg-color: var(--boosterfi-pink);
+}
+
+/* Logo styling */
+.md-header__button.md-logo img {
+  height: 2rem;
+}
+
+/* Button gradient */
+.md-button--primary {
+  background: linear-gradient(135deg, var(--boosterfi-purple) 0%, var(--boosterfi-magenta) 50%, var(--boosterfi-pink) 100%);
+  border: none;
+}
+
+.md-button--primary:hover {
+  background: linear-gradient(135deg, var(--boosterfi-dark-purple) 0%, var(--boosterfi-purple) 50%, var(--boosterfi-magenta) 100%);
+}
+
+/* Admonition custom colors */
+.md-typeset .admonition.success,
+.md-typeset details.success {
+  border-color: var(--boosterfi-purple);
+}
+
+.md-typeset .success > .admonition-title,
+.md-typeset .success > summary {
+  background-color: rgba(139, 92, 246, 0.1);
+}
+
+.md-typeset .success > .admonition-title::before,
+.md-typeset .success > summary::before {
+  background-color: var(--boosterfi-purple);
+}
+
+/* Custom cards grid */
+.grid.cards > ul > li {
+  border-radius: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.grid.cards > ul > li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
+/* Table styling */
+.md-typeset table:not([class]) th {
+  background-color: var(--boosterfi-purple);
+  color: white;
+}
+
+/* Code blocks */
+.md-typeset code {
+  background-color: rgba(139, 92, 246, 0.1);
+}
+
+/* Links */
+.md-typeset a {
+  color: var(--boosterfi-purple);
+}
+
+.md-typeset a:hover {
+  color: var(--boosterfi-pink);
+}
+
+/* Navigation tabs */
+.md-tabs__link--active {
+  color: var(--boosterfi-purple) !important;
+}
+
+/* Footer */
+.md-footer {
+  background-color: var(--boosterfi-dark-purple);
+}
+
+/* Hero section for home page */
+.hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.hero img {
+  max-width: 400px;
+  margin-bottom: 1rem;
+}
+
+/* Status badges */
+.status-complete {
+  color: #22c55e;
+}
+
+.status-progress {
+  color: #f59e0b;
+}
+
+.status-pending {
+  color: #6b7280;
+}
+
+/* Custom icons colors */
+.success {
+  color: #22c55e;
+}
+
+.warning {
+  color: #f59e0b;
+}
+
+/* FAQ styling */
+.md-typeset details {
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.md-typeset details summary {
+  font-weight: 500;
+}
+
+/* Social icons in footer */
+.md-social__link svg {
+  fill: white;
+}
+
+.md-social__link:hover svg {
+  fill: var(--boosterfi-pink);
+}
