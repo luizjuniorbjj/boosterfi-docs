@@ -93,6 +93,6 @@ plugins:
       minify_html: true
 
 copyright: >
-  <img src="/assets/logo.png" alt="BoosterFi" style="height: 50px; margin-bottom: 10px;"><br>
-  <strong>BoosterFi</strong> - Boost your earnings with Flash Loans<br>
-  Copyright &copy; 2024-2025 BoosterFi. All rights reserved.
+  <div style="text-align: center; width: 100%;"><img src="assets/logo.png" alt="BoosterFi" style="height: 60px; margin-bottom: 15px;"></div><br>
+  <div style="text-align: center;"><strong>BoosterFi</strong> - Boost your earnings with Flash Loans</div>
+  <div style="text-align: center;">Copyright &copy; 2024-2025 BoosterFi. All rights reserved.</div>
